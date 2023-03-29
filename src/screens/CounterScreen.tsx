@@ -1,6 +1,8 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
+import { FloatingActionButton } from '../components/FloatingActionButton';
 import { useState } from 'react';
 import tailwind from 'twrnc';
+import React from 'react';
 
 export const CounterScreen = () => {
 
@@ -11,23 +13,18 @@ export const CounterScreen = () => {
          <Text style={tailwind.style('font-bold text-center mt-88 mb-64 text-4xl')}>
             Contador: {contador}
          </Text>
-         <TouchableOpacity
-            style={tailwind.style('bg-indigo-500 w-18 h-18 rounded-full left-4 shadow shadow-xl')}
-            onPress={ () => setContador( contador - 1 ) }
-         >
-            <View style={ tailwind.style('flex justify-center') }>
-               <Text style={tailwind.style('font-bold text-gray-800 text-2xl self-center mt-4 text-white')}>-1</Text>
-            </View>
-         </TouchableOpacity>
-         <TouchableOpacity
-            style={tailwind.style('bg-indigo-500 w-18 h-18 rounded-full absolute -bottom-0 right-4 shadow shadow-xl')}
-            onPress={ () => setContador( contador + 1 ) }
-         >
-            <View style={ tailwind.style('font-bold text-center flex justify-center') }>
-               <Text style={tailwind.style('text-gray-800 text-2xl self-center text-white mt-4')}>+1</Text>
-            </View>
-         </TouchableOpacity>
+
+         <FloatingActionButton 
+            title='+1'
+            onPress={ () => setContador( contador + 1) }
+            position="left"
+         />
+
+         <FloatingActionButton 
+            title='-1'
+            onPress={ () => setContador( contador - 1) }
+            position='right'
+         />
       </View>
-      //contador hecho en reactnative
    )
 }
